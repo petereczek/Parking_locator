@@ -45,8 +45,9 @@ router.post('/', (req, res) => {
 
 
 
-  Node.create({ Latitude, Longitude, Available: availabletime })
+  Node.create({ Latitude, Longitude, Available: availabletime.toISOString() })
     .then(node => {
+
       res.status(201).json(node);
     })
     .catch(err => {
@@ -106,5 +107,12 @@ router.delete('/:id', (req, res) => {
     });
 });
 
+// 
+//
+//
+// const helper = (currLocation, node) => {
+//   // calculation
+//   return (within 5 miles) true or false
+// }
 
 module.exports = router;
